@@ -1,0 +1,27 @@
+{
+    "name": "tarik02/laravel-telegram-extra",
+    "description": "Extra functions for tarik02/laravel-telegram.",
+    "keywords": [
+        "laravel",
+        "telegram"
+    ],
+    "license": "MIT",
+    "require": {
+        "php": "^7.4|^8.0",
+        "tarik02/laravel-telegram": "0.1.0"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Tarik02\\LaravelTelegramExtra\\Providers\\EventServiceProvider",
+                "Tarik02\\LaravelTelegramExtra\\Providers\\MacroServiceProvider",
+                "Tarik02\\LaravelTelegramExtra\\Providers\\TelegramServiceProvider"
+            ]
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Tarik02\\LaravelTelegramExtra\\": "src/"
+        }
+    }
+}

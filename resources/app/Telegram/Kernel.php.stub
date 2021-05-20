@@ -1,0 +1,25 @@
+<?php
+
+namespace App\Telegram;
+
+use Tarik02\LaravelTelegram\Kernel as TelegramKernel;
+
+use Tarik02\LaravelTelegramExtra\Middleware\{
+    SetLocaleFromSender,
+    SomethingWentWrong
+};
+
+/**
+ * Class Kernel
+ * @package App\Telegram
+ */
+class Kernel extends TelegramKernel
+{
+    /**
+     * @var string[]
+     */
+    protected array $middleware = [
+        SetLocaleFromSender::class,
+        SomethingWentWrong::class,
+    ];
+}

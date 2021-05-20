@@ -1,0 +1,15 @@
+<?php
+
+return [
+    'bots' => [
+        'main' => [
+            'token' => env('TELEGRAM_BOT_TOKEN'),
+            'username' => env('TELEGRAM_BOT_USERNAME'),
+            'dispatcher' => \App\Telegram\Dispatcher::class,
+
+            'webhook' => [
+                'path' => '/' . env('TELEGRAM_BOT_TOKEN'),
+            ],
+        ],
+    ],
+];

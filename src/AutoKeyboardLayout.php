@@ -87,7 +87,7 @@ final class AutoKeyboardLayout
     }
 
     /**
-     * @return KeyboardButtonCollectionCollection|InlineKeyboardButtonCollectionCollection
+     * @return KeyboardButtonCollectionCollection|InlineKeyboardButtonCollectionCollection|null
      */
     public function build()
     {
@@ -100,7 +100,15 @@ final class AutoKeyboardLayout
             }
         }
 
+        if (! isset($result)) {
+            return null;
+        }
+
         foreach ($this->groups as $group) {
+            if (\count($group['buttons']) === 0) {
+                continue;
+            }
+
             $chunks = \array_chunk(
                 $group['buttons'],
                 ($group['wrap']
@@ -137,6 +145,10 @@ final class AutoKeyboardLayout
      */
     private static function determineCountPerRow(int $count, int $maxButtonsPerRow): int
     {
+        if ($count <= 3) {
+            return $count;
+        }
+
         for ($i = 3; $i <= $count; ++$i) {
             if (
                 $count % $i === 0 &&

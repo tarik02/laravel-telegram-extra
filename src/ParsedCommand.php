@@ -90,13 +90,16 @@ final class ParsedCommand
             return null;
         }
 
-        [$name, $receiver] = array_merge(
+        [$name, $receiver] = \array_merge(
             \explode('@', $matches[1], 2),
             [null]
         );
         $argumentsString = $matches[2];
 
-        $arguments = explode(' ', $argumentsString);
+        $arguments = (empty($argumentsString)
+            ? []
+            : \explode(' ', $argumentsString)
+        );
 
         return new self(
             $name,
